@@ -1,0 +1,480 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-family);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+h1,
+h2,
+p,
+dl,
+dd {
+  margin: 0;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+
+/* Every hoverable element eases its hover change over the same duration. */
+.link-button,
+.tab,
+.card,
+.button,
+.input {
+  transition-property: color, background-color, border-color, outline-color, opacity;
+  transition-duration: var(--transition-hover);
+}
+
+.page {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-4) var(--space-12);
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.header__logo {
+  height: 32px;
+}
+.header__brand {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  gap: var(--space-4);
+  color: inherit;
+  text-decoration: none;
+}
+.header__title {
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.header__user {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+.header__toggle {
+  height: 36px;
+  padding: 0 var(--space-4);
+  font-size: 14px;
+}
+.header__link {
+  width: 280px;
+  height: 36px;
+  font-size: 14px;
+}
+
+/* Landing page and full-page notices */
+.landing__top {
+  display: flex;
+  justify-content: flex-end;
+}
+.landing {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-4);
+  max-width: 480px;
+  margin: var(--space-12) auto 0;
+}
+.landing__logo {
+  height: 48px;
+}
+.landing__title {
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
+.landing__text {
+  color: var(--color-text-secondary);
+}
+.landing__join {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-8);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+.landing__error {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-error);
+}
+.link-button {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--color-link);
+  text-decoration: underline;
+  cursor: pointer;
+}
+.link-button:hover {
+  color: var(--color-primary-hover);
+}
+
+.banner {
+  margin-bottom: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--color-primary);
+  border-radius: var(--radius-interactive);
+  background: var(--color-primary-tint);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-6);
+}
+.tab {
+  height: 48px;
+  padding: 0 var(--space-6);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-interactive);
+  background: var(--color-surface);
+  font: inherit;
+  font-weight: 500;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.tab:hover {
+  border-color: var(--color-primary-hover);
+}
+.tab--active {
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.tab--active:hover {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+}
+
+/* Panel */
+.panel {
+  padding: var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-container);
+  background: var(--color-surface);
+}
+.panel__heading {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 600;
+}
+.panel__hint {
+  margin-top: var(--space-1);
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+/* Cards */
+.deck {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  margin: var(--space-6) 0;
+}
+.card {
+  width: 80px;
+  height: 112px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-interactive);
+  background: var(--color-surface);
+  font: inherit;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  /* The border stays 1px; the second pixel of the 2px ring is an outline drawn just inside it
+     (offset -2px = border width + outline width), and its colour transitions. Animating border-width instead makes the hover lag and shifts the layout. */
+  outline: 1px solid transparent;
+  outline-offset: -2px;
+}
+.card:hover:not(:disabled) {
+  border-color: var(--color-primary-hover);
+  outline-color: var(--color-primary-hover);
+}
+.card--selected {
+  border-color: var(--color-primary-hover);
+  outline-color: var(--color-primary-hover);
+  background: var(--color-primary-tint);
+  color: var(--color-text);
+}
+/* Keep the keyboard focus ring (the .card outline above would otherwise override it). */
+.card:focus-visible {
+  outline: 2px solid var(--color-primary-hover);
+  outline-offset: 2px;
+}
+.card:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Buttons */
+.button {
+  height: 48px;
+  padding: 0 var(--space-6);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-interactive);
+  font: inherit;
+  font-weight: 500;
+  letter-spacing: -0.12px;
+  color: var(--color-text);
+  cursor: pointer;
+}
+.button--primary {
+  background: var(--color-primary);
+  color: var(--color-on-primary);
+}
+.button--secondary {
+  background: transparent;
+}
+.button:hover:not(:disabled) {
+  border-color: var(--color-primary-hover);
+  background: var(--color-primary-hover);
+  color: var(--color-on-primary);
+}
+.button:disabled {
+  border-color: var(--color-disabled);
+  background: var(--color-disabled);
+  color: var(--color-text-secondary);
+  cursor: not-allowed;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+.actions__count {
+  margin-left: auto;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+
+/* Stats */
+.stats {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  padding: var(--space-4) var(--space-6);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-container);
+  background: var(--color-bg);
+}
+.stats__average {
+  display: flex;
+  flex-direction: column;
+}
+.stats__label {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+.stats__value {
+  font-size: 36px;
+  line-height: 44px;
+  font-weight: 600;
+}
+.stats--prominent {
+  border-color: var(--color-primary);
+  background: var(--color-primary-tint);
+}
+.stats--prominent .stats__value {
+  font-size: 64px;
+  line-height: 72px;
+}
+.stats__details {
+  display: flex;
+  gap: var(--space-6);
+}
+.stats__details dt {
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--color-text-secondary);
+}
+.stats__details dd {
+  font-size: 20px;
+  line-height: 30px;
+  font-weight: 500;
+}
+
+/* Vote table */
+.votes {
+  width: 100%;
+  border-collapse: collapse;
+}
+.votes th,
+.votes td {
+  padding: var(--space-3) var(--space-2);
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+.votes th {
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  color: var(--color-text-secondary);
+}
+.votes__vote {
+  width: 160px;
+  text-align: center !important;
+}
+.votes__row--offline {
+  color: var(--color-text-secondary);
+}
+.votes__offline {
+  font-size: 12px;
+}
+.mini-card {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* Without this the box sits on the text baseline when it has a number inside but on its
+     bottom edge when empty, which changes the row's line box height between states. */
+  vertical-align: middle;
+  width: 40px;
+  height: 56px;
+  border-radius: var(--radius-interactive);
+  font-weight: 500;
+  font-size: 18px;
+}
+.mini-card--front {
+  border: 2px solid var(--color-primary-hover);
+  /* Light, mostly transparent blue so the number stays easy to read. */
+  background: rgba(47, 111, 214, 0.1);
+}
+.mini-card--back {
+  border: 1px solid var(--color-primary);
+  /* Plain diagonal stripes: a minimal card back. */
+  background: repeating-linear-gradient(
+    45deg,
+    var(--color-primary-tint) 0 4px,
+    var(--color-surface) 4px 8px
+  );
+}
+/* Flip between the face-down and face-up mini card when reveal/hide is toggled. */
+.flip {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 56px;
+  vertical-align: middle;
+  perspective: 400px;
+}
+.flip__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform var(--transition-hover) ease-in-out;
+}
+.flip--revealed .flip__inner {
+  transform: rotateY(180deg);
+}
+.flip__face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+.flip__face--front {
+  transform: rotateY(180deg);
+}
+@media (prefers-reduced-motion: reduce) {
+  .flip__inner {
+    transition: none;
+  }
+}
+.mini-card--empty {
+  border: 1px dashed var(--color-border-strong);
+}
+
+/* Name modal */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-4);
+  background: rgba(1, 15, 38, 0.5);
+}
+.modal {
+  width: 100%;
+  max-width: 440px;
+  padding: var(--space-8);
+  border-radius: var(--radius-container);
+  background: var(--color-surface);
+}
+.modal__title {
+  margin-bottom: var(--space-6);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+}
+.field {
+  display: block;
+}
+.field__label {
+  display: block;
+  margin-bottom: var(--space-2);
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+}
+.input {
+  width: 100%;
+  height: 56px;
+  padding: 0 var(--space-4);
+  border: 2px solid var(--color-border-strong);
+  border-radius: var(--radius-interactive);
+  background: var(--color-surface);
+  font: inherit;
+  color: var(--color-text);
+}
+.input:hover,
+.input:focus-visible {
+  border-color: var(--color-primary-hover);
+  outline: none;
+}
+.modal__actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+}

@@ -1,0 +1,37 @@
+/* Design tokens: a minimal light theme with one blue accent. */
+:root {
+  --color-bg: #eeece8;
+  --color-surface: #ffffff;
+  --color-text: #010f26;
+  --color-text-secondary: #22344d;
+  --color-link: #174a80;
+
+  --color-primary: #2f6fd6;
+  --color-primary-hover: #1f55b0;
+  --color-primary-tint: #dbe7fa;
+  --color-on-primary: #ffffff;
+
+  --color-border: #b0b7c3;
+  --color-border-strong: #5f6b7d;
+  --color-disabled: #b0b7c3;
+
+  --color-error: #b40909;
+  --color-error-tint: #f9e8e8;
+  --color-success: #2f4a2c;
+  --color-success-tint: #d5f4d2;
+
+  --radius-interactive: 8px;
+  --radius-container: 20px;
+
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-12: 48px;
+
+  --transition-hover: 250ms;
+
+  --font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}

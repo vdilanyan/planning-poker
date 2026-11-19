@@ -1,0 +1,13 @@
+# Render Blueprint: deploys the Dockerfile as a free web service.
+# Render sets PORT itself and the server reads it. TRUST_PROXY makes the per-IP limits use the
+# real client address from Render's proxy (X-Forwarded-For).
+services:
+  - type: web
+    name: planning-poker
+    runtime: docker
+    plan: free
+    healthCheckPath: /healthz
+    autoDeploy: true
+    envVars:
+      - key: TRUST_PROXY
+        value: "1"

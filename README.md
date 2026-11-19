@@ -58,6 +58,14 @@ docker run -p 3000:3000 -v poker-data:/data planning-poker
 
 An older single-room `state.json` is not compatible with this version: it is moved aside as `state.json.corrupt-<timestamp>` and the server starts empty.
 
+## Deploy to Render (free)
+
+1. Push this repo to GitHub.
+2. On [render.com](https://render.com): **New** → **Blueprint**, pick the repo, and apply. `render.yaml` creates a free Docker web service with the health check and `TRUST_PROXY=1` already set.
+3. Open the `*.onrender.com` link Render shows once the deploy finishes.
+
+The free plan sleeps after about 15 minutes without traffic (the first visit then takes a minute to wake it) and has no persistent disk, so rooms are lost on restart. Room links keep working: a room is created again, empty, when someone opens it.
+
 ## Tests
 
 ```bash
